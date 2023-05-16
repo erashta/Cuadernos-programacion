@@ -93,7 +93,7 @@ world!”.
     }
 
 
-Defina un arreglo de cadenas en las que las cadenas contengan los
+Define un arreglo de cadenas en las que las cadenas contengan los
 nombres de los meses. Imprime esas cadenas. Pasa el arreglo a una
 función que imprima esas cadenas.
 
@@ -119,7 +119,7 @@ función que imprima esas cadenas.
         return 0;
     }
 
-Leer una secuencia de palabras de la entrada. Usa ``Salir`` como una
+Lee una secuencia de palabras de la entrada. Usa ``Salir`` como una
 palabra que termina la entrada. Escriba las palabras en el orden en que
 fueron ingresadas. No escribas una palabra dos veces.
 
