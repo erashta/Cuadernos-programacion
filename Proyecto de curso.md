@@ -8,6 +8,8 @@ El trabajo grupal de curso tiene como objetivos principales:
 
 **Equipos a lo más de 4 estudiantes** y corresponde a la última práctica calificada del curso.
 
+**Fecha de presentación:** 3 de julio.
+
 ### Prerequisitos
 
 Conocer otro lenguaje de programación como Python. Puedes llevar los siguientes cursos:
@@ -71,7 +73,10 @@ bibliografía. El cuaderno de trabajo  debe incluir la siguiente información:
 
 El código será trabajado en equipo (se puede utilizar Github), de manera que se pueda verificar los aportes hechos por cada uno de los integrantes del curso o en la plataforma del curso.
 No hay restricciones para tomar como base código tomado de otras fuentes, siempre y cuando se cite debidamente la fuente y se realice las adaptaciones que requiera el propio trabajo. 
+
+
 El código deberá estar mínimamente comentado, siempre en español. Se ignorará cualquier comentario en otro idioma.
+
 Asimismo, se ignorará cualquier código simplemente copiado cuya fuente no haya sido citada, y se asignará el puntaje mínimo al grupo.
 
 
