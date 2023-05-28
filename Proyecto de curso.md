@@ -80,7 +80,10 @@ El código deberá estar mínimamente comentado, siempre en español. Se ignorar
 Asimismo, se ignorará cualquier código simplemente copiado cuya fuente no haya sido citada, y se asignará el puntaje mínimo al grupo.
 
 
+### Lista de proyectos
 
+1. [Generador de nombres tontos](https://gist.github.com/kapumota/cc5a5d6ad69248a2547282160cc39d1e)
+2. [Contando sílabas en poesía Haiku](https://gist.github.com/kapumota/074eb3e9d0e9231dd09e76aa37dfbab7)
 
 
 
