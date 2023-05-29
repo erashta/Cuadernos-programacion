@@ -1,4 +1,4 @@
-## Proyecto de curso 
+## Proyectos del curso 
 
 El trabajo grupal de curso tiene como objetivos principales:
 
