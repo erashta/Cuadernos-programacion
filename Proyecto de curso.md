@@ -34,8 +34,7 @@ La propuesta de proyecto deberá incluir lo siguiente:
 
 - Nombre del proyecto
 - Miembros del equipo
-- Artículos científicos relevantes
-
+- Lenguaje de programación a usar
 
 **2. Informe del trabajo grupal** :
 
@@ -84,6 +83,8 @@ Asimismo, se ignorará cualquier código simplemente copiado cuya fuente no haya
 
 1. [Generador de nombres tontos](https://gist.github.com/kapumota/cc5a5d6ad69248a2547282160cc39d1e)
 2. [Contando sílabas en poesía Haiku](https://gist.github.com/kapumota/074eb3e9d0e9231dd09e76aa37dfbab7)
+3. [Simulación de incendios forestales](https://gist.github.com/kapumota/6a3dd3d730a59bc448b9191badd5ab92)
+4. 
 
 
 
