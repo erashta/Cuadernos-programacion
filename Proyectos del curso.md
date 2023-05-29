@@ -85,6 +85,7 @@ Asimismo, se ignorará cualquier código simplemente copiado cuya fuente no haya
 2. [Contando sílabas en poesía Haiku](https://gist.github.com/kapumota/074eb3e9d0e9231dd09e76aa37dfbab7)
 3. [Simulación de incendios forestales](https://gist.github.com/kapumota/6a3dd3d730a59bc448b9191badd5ab92)
 4. [Generación de sobretonos musicales](https://gist.github.com/kapumota/4ab930656cbd461becc7bb5a14b1d523)
+5. [Robots hambrientos](https://gist.github.com/kapumota/f5fdf8fe66c88de32896ec5f9e946ad2)
 
 
 
