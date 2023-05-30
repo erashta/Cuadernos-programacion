@@ -87,6 +87,7 @@ Asimismo, se ignorará cualquier código simplemente copiado cuya fuente no haya
 4. [Generación de sobretonos musicales](https://gist.github.com/kapumota/4ab930656cbd461becc7bb5a14b1d523)
 5. [Robots hambrientos](https://gist.github.com/kapumota/f5fdf8fe66c88de32896ec5f9e946ad2)
 6. [Un corredor de laberintos de varias dimensiones](https://gist.github.com/kapumota/0256a3e0e34dce4eb4fe378b1a7cc500)
+7. [Explorando la paradoja de Fermi](https://gist.github.com/kapumota/29af2581ed5a4f2c537ad8c59eac8392)
 
 
 
