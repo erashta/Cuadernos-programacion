@@ -6,9 +6,11 @@ El trabajo grupal de curso tiene como objetivos principales:
 - Promover la participación de los estudiantes en el desarrollo, réplica de material académico que pueden resultar en conocimiento base para futuros proyectos de investigación.
 - Desarrollar habilidades grupales, extendidas en el ámbito laboral y de la industria.
 
-**Equipos a lo más de 4 estudiantes** y corresponde a la última práctica calificada del curso y no es anulable.
+**Equipos a lo más de 4 estudiantes** que corresponde a la última práctica calificada del curso y no es anulable.
 
-**Fecha de presentación:** 3 de julio.
+**Fecha de presentación:** 2 de julio hasta las 11PM. 
+
+**Modo de entrega:** un representante del equipo subira todo el material trabajado en la plataforma del curso.
 
 ### Prerequisitos
 
