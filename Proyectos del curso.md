@@ -86,6 +86,7 @@ Asimismo, se ignorará cualquier código simplemente copiado cuya fuente no haya
 3. [Simulación de incendios forestales](https://gist.github.com/kapumota/6a3dd3d730a59bc448b9191badd5ab92)
 4. [Generación de sobretonos musicales](https://gist.github.com/kapumota/4ab930656cbd461becc7bb5a14b1d523)
 5. [Robots hambrientos](https://gist.github.com/kapumota/f5fdf8fe66c88de32896ec5f9e946ad2)
+6. [Un corredor de laberintos 2D](https://gist.github.com/kapumota/0256a3e0e34dce4eb4fe378b1a7cc500)
 
 
 
