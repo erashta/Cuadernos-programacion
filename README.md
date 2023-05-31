@@ -5,4 +5,7 @@
 3. Ordenamiento 2
 4. Introducción a punteros
 5. Referencias
-6. Cadenas 1
+6. Cadenas - parte 1
+7. Cadenas - parte 2
+8. Administración de memoria
+9. Clases y estructuras
