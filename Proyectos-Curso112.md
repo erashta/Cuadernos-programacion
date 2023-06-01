@@ -94,6 +94,7 @@ Asimismo, se ignorará cualquier código simplemente copiado cuya fuente no haya
 7. [Explorando la paradoja de Fermi](https://gist.github.com/kapumota/29af2581ed5a4f2c537ad8c59eac8392)
 8. [Clasificación en aprendizaje automático](https://gist.github.com/kapumota/8bfd97cad65f332212054f67a1a0745f)
 9. [Web scrapping para Lenguas Originarias](https://gist.github.com/kapumota/73ff0e65d55e51f9e7d66752bf0b5ae6)
+10. [Simulando una bandada con Python](https://gist.github.com/kapumota/6845014ba6c769ab59b265236e438918)
 
 
 
