@@ -12,7 +12,7 @@ El trabajo grupal de curso tiene como objetivos principales:
 
 **Modo de entrega:** un representante del equipo subira todo el material trabajado en la plataforma del curso.
 
-**Rúbrica de evaluación:** la evaluación de esta práctica se encuentra en el siguiente [documento](https://gist.github.com/kapumota/e7bc21222c8efa4df3d4f0b7d18da0ba).
+**Rúbrica de evaluación:** la forma de calificación  de esta evaluación se encuentra en el siguiente [documento](https://gist.github.com/kapumota/e7bc21222c8efa4df3d4f0b7d18da0ba) de rúbricas.
 
 ### Prerequisitos
 
