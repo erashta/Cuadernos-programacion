@@ -910,4 +910,153 @@ Por ejemplo:
 
 -  No olvides cerrar tus archivos.
 
+Ejemplo 1
+^^^^^^^^^
+
+.. code:: c++
+
+    #include <iostream>
+    #include <fstream>                         
+    using namespace std;
+    
+    int main()
+    { 
+       double buff=3.14;                    // buffer para enteros
+       int i;
+    
+       ofstream os("intdata.dat", ios::binary);  // creamos un flujo de salida os
+    
+       os.write((char*)&buff, sizeof(double));   // escribimos
+     
+       os.close();                              // debes cerrar antes de abrir otro flujo asociado con 
+                                                 // el mismo archivo
+                                                 e
+       buff=0.0;                                 // limpiamos el buffer
+    
+       ifstream is("intdata.dat", ios::binary);  // creamos un flujo de entrada  is
+       is.read((char*)&buff, sizeof(buff));      // leeemos
+    
+       cout << buff << endl;                     // mostramos
+      
+       is.close();
+    
+       return 0;
+    
+    } 
+
+¿Cuál es el uso de & y sizeof en el código?
+
+.. code:: c++
+
+    // Tu respuesta
+
+Ejemplo 2
+^^^^^^^^^
+
+.. code:: c++
+
+    #include <iostream>
+    #include <fstream>                           
+    using namespace std;
+    
+    const int MAX = 100;                         // numero of ints
+    
+    int main()
+    { 
+       int buff[MAX];                            // buffer para enteros 
+       int i;
+    
+       for(i=0; i<MAX; i++)
+          buff[i] = i;                           // ponemos algo de datos en el buffer 
+    
+       ofstream os("intdata.dat", ios::binary);  // creamos el flujo de salida os
+    
+       os.write((char*)buff, MAX*sizeof(int));   // escribimos
+     
+       os.close();                               // debes cerrar antes de abrir otro flujo asociado con 
+                                                 // el mismo archivo
+                                                 
+       for(i=0; i<MAX; i++) 
+          buff[i] =0;                            // limpiamos el buffer
+    
+       ifstream is("intdata.dat", ios::binary);  // creamos el flujo de entrada is
+       is.read((char*)buff, MAX*sizeof(int));    // leemos
+    
+       for(i=0; i<MAX; i++)
+          cout << buff[i] << endl;               // lo mostramos
+       is.close();
+    
+       return 0;
+    
+    } 
+
+
+**Preguntas:**
+
+-  ¿Tiene que recorrer el arreglo para leer y escribir?
+
+-  En lugar de ``MAX*sizeof(int)``, ¿qué más se podría haber usado?
+
+.. code:: c++
+
+    //Tus respuestas
+
+Objetos de lectura y escritura
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+El siguiente código parcial muestra la idea de escribir y leer un objeto
+completo. Esto funciona si tu objeto no contiene punteros o cadenas stl
+(como un ejemplo). Piensa en una copia superficial frente a una copia
+profunda (copiar solo la dirección en lugar de copiar todos los
+elementos.
+
+.. code:: c++
+
+    #include <fstream>                           
+    using namespace std;
+    
+    class UnaClase
+    {
+       private:
+          // datos privados
+       public:
+          // funciones publicas como getData() y showData()
+    };
+    
+    int main()
+    { 
+       UnaClase myobj;
+    
+       ofstream os("objfile.dat", ios::binary);  // creamos el flujo de salida os
+       os.write((char*)&myobj, sizeof(UnaClase)); // escribimos
+    
+       os.close();
+    
+       ifstream is("objfile.dat", ios::binary);  // creamos el flujo de entrada is
+       is.read((char*)&myobj, sizeof(UnaClase));  // leemos
+    
+       is.close();
+       return 0;
+    
+    } 
+
+Si lees y escribes un objeto desde programas separados, ¡asegúrate de
+que la clase que lee un objeto es idéntica a la clase que lo escribió!.
+
+Leer y escribir varios objetos
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code:: c++
+
+    // Completa
+
+Sobre la lectura y escritura de cadenas
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Si tu clase contiene datos (o campos) que son dinámicos, como punteros a
+datos y cadenas stl, entonces no puedes escribir todo el objeto en un
+solo paso. Tendrás que escribir los campos individuales y también crear
+una copia de lo que se indique.
+
+Si no hace esto, es probable que parezca que faltan tus datos.
 
