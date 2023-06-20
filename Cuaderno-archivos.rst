@@ -6,12 +6,14 @@ Podemos escribir archivos y mostrar los elementos en los archivos
 creados. ¿Qué es exactamente un archivo en C++?.
 
 Los archivos creados en C++ ayudan a almacenar datos en el disco duro y
-permanecen en el sistema para su uso posterior. Esto es diferente de los
-programas tradicionales, donde los datos u objetos que contienen datos
-se eliminan después de la finalización del programa para recuperar el
-espacio de memoria temporal asignado. Muchas veces, necesitamos qu los
-datos se almacenen de forma segura en el sistema, por lo que obtener
-elementos de un archivo requiere menos tiempo.
+permanecen en el sistema para su uso posterior.
+
+Esto es diferente de los programas tradicionales, donde los datos u
+objetos que contienen datos se eliminan después de la finalización del
+programa para recuperar el espacio de memoria temporal asignado. Muchas
+veces, necesitamos qu los datos se almacenen de forma segura en el
+sistema, por lo que obtener elementos de un archivo requiere menos
+tiempo.
 
 Flujos
 ^^^^^^
@@ -100,7 +102,7 @@ Ejemplo
             getline(cin, linea1);
             if (linea1 == "-1")
                 break;
-            cout<< linea << endl;
+            cout<< linea1 << endl;
         }
         ofObj.close();
         ifstream ifObj;
@@ -111,10 +113,10 @@ Ejemplo
             cout << linea1 << endl;
         }
         ifObj.close();
-            return 0;
+        return 0;
     }
 
-En este código, usamos la clase ``ofstream`` y creamos un objeto y un
+En este código, usamos la clase ``ofstream``, creamos un objeto y un
 valor de cadena. Luego usamos el método ``open`` para acceder al archivo
 en modo abierto. El texto ingresado se escribe en el archivo usando el
 objeto de clase ``ifstream``. Luego, el programa imprime el contenido
@@ -139,7 +141,8 @@ Creación de un nuevo archivo
     
     int main()
     {
-        // completa 
+       fstream fs;
+       fs.open("data.txt", ios::in);
     
         if(fs.is_open()==0)
         {
@@ -196,8 +199,9 @@ Abrir un archivo
 
 Este es el primer paso que se da hacia la administración de archivos en
 C++ y se puede hacer pasando el nombre de archivo en el constructor
-cuando se crea un objeto o usando el método ``open()``. La sintaxis en
-general para abrir un archivo es la siguiente:
+cuando se crea un objeto o usando el método ``open()``.
+
+La sintaxis en general para abrir un archivo es la siguiente:
 
 .. code:: c++
 
@@ -219,17 +223,17 @@ llamada a la función miembro ``open``:
     ofstream archivo1;
     archivo1.open ("ejemplo.bin", ios::out | ios::app | ios::binary);
 
-Cada una de las funciones miembro ``open`` de las clases ``ofstream``,
-``ifstream`` y ``fstream`` tiene un modo predeterminado que se usa si el
-archivo se abre sin un segundo argumento:
+Cada una de las funciones ``open`` de las clases ``ofstream``,
+``ifstream`` y ``fstream`` tienen un modo predeterminado que se usa si
+el archivo se abre sin un segundo argumento:
 
--  ``ofstream ios::out``
--  ``ifstream ios::in``
--  ``fstream ios::in | ios::out``
+-  ``ofstream -> ios::out``
+-  ``ifstream-> ios::in``
+-  ``fstream ->  ios::in | ios::out``
 
 Para las clases ``ifstream`` y ``ofstream``, ``ios::in`` y ``ios::out``
-se asumen automática y respectivamente, incluso si se pasa un modo que
-no los incluye como segundo argumento a la función miembro ``open``.
+se asumen automática, incluso si se pasa un modo que no los incluye como
+segundo argumento a la función miembro ``open``.
 
 Para ``fstream``, el valor predeterminado solo se aplica si se llama a
 la función sin especificar ningún valor para el parámetro de modo. Si se
@@ -238,18 +242,19 @@ predeterminado se anula, no se combina.
 
 Los flujos de archivos abiertos en modo binario realizan operaciones de
 entrada y salida independientemente de cualquier consideración de
-formato. Los archivos no binarios se conocen como archivos de texto y
-pueden producirse algunas traducciones debido al formato de algunos
+formato. Los archivos no binarios se conocen como **archivos de texto**
+y pueden producirse algunas traducciones debido al formato de algunos
 caracteres especiales (como los caracteres de nueva línea y de retorno
 de carro).
 
 Dado que la primera tarea que se realiza en un flujo de archivos
 generalmente es abrir un archivo, estas tres clases incluyen un
 constructor que llama automáticamente a la función de miembro ``open`` y
-tiene exactamente los mismos parámetros que este miembro. Por lo tanto,
-también podríamos haber declarado el objeto ``archivo1`` anterior y
-realizar la misma operación de apertura el el ejemplo anterior
-escribiendo:
+tiene exactamente los mismos parámetros que este miembro.
+
+Por lo tanto, también podríamos haber declarado el objeto ``archivo1``
+anterior y realizar la misma operación de apertura el el ejemplo
+anterior escribiendo:
 
 .. code:: c++
 
@@ -259,11 +264,11 @@ escribiendo:
 Para verificar si se abrió correctamente un archivo, puedes utilizar el
 miembro ``is_open``. Esta función miembro devuelve un valor ``bool`` de
 ``true`` en el caso de que el objeto de flujo esté asociado con un
-archivo abierto, o ``false`` en caso contrario:
+archivo abierto o ``false`` en caso contrario:
 
 .. code:: c++
 
-    if (archivo1.is_open()) // ok, proceda con la salida 
+    if (archivo1.is_open()) 
 
 Ejemplo: abrir un archivo
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -277,7 +282,8 @@ Ejemplo: abrir un archivo
     
     int main()
     {
-        // completa
+        fstream fs;
+        fs.open("data.txt", ios::in);
     
         if(fs.is_open()==0)
         {
@@ -346,7 +352,15 @@ datos en los archivos creados o abiertos.
     
     int main() {
         fstream archivo1;                       
-        // completa ...
+        archivo1.open("archivo2.txt", ios::out);                
+        if (!archivo1) {                            
+            cout<<" Error al crear el archivo ";          
+        }
+        else {
+            cout<<" Archivo creado y data a ser en el archivo";    
+            archivo1<<"Rust, C++, Python";  
+            archivo1.close();                   
+        }
         return 0;
     }
 
@@ -358,6 +372,26 @@ en ``out``, lo que nos permitirá escribir en el archivo.
 Usamos la declaración ``if`` para verificar la creación del archivo.
 Escribimos los datos en el archivo creado. Usamos la función ``close()``
 en el objeto para cerrar el archivo.
+
+**Ejemplo**
+
+.. code:: c++
+
+    #include <iostream>
+    #include <fstream>
+    using namespace std;
+    
+    int main () {
+      ofstream unArchivo ("ejemplo.txt");
+      if (unArchivo.is_open())
+      {
+        unArchivo << "Esta es una linea.\n";
+        unArchivo << "Esta es otra linea.\n";
+        unArchivo.close();
+      }
+      else cout << "No es posible abrir el archivo";
+      return 0;
+    }
 
 Ejercicio
 ^^^^^^^^^
@@ -393,7 +427,33 @@ Escribe el programa a partir de las siguiente indicaciones.
 
 .. code:: c++
 
-    // Completa
+    #include <iostream>
+    #include <fstream>
+    
+    using namespace std;
+    
+    int main()
+    {
+        fstream fs;
+        char c;
+    
+        fs.open("data.txt", ios::in);
+    
+        if(fs.is_open()==0)
+        {
+            cout<<"No se puede abrir el archivo";
+        }
+        else
+        {
+            while(!fs.eof())
+            {
+                fs.get(c);
+                cout<<c;
+            }
+            fs.close();
+        }
+        return 0;
+    }
 
 Lectura de un archivo
 ^^^^^^^^^^^^^^^^^^^^^
@@ -437,6 +497,43 @@ del carácter del archivo usando el método ``eof()``. Leemos caracteres
 individuales del archivo en una variable de carácter ``c`` usando el
 método ``get()`` y lo imprimimos en la pantalla. El ciclo ``while``
 termina cuando obtenemos el carácter ``eof`` (CTRL + D) del archivo.
+
+**Ejemplo**
+
+.. code:: c++
+
+    #include <iostream>
+    #include <fstream>
+    #include <string>
+    
+    using namespace std;
+    
+    int main () {
+      string linea;
+      ifstream unArchivo ("ejemplo.txt");
+      if (unArchivo.is_open())
+      {
+        while (getline (unArchivo,linea) )
+        {
+          cout << linea << '\n';
+        }
+        unArchivo.close();
+      }
+    
+      else cout << "No es posible abrir el archivo"; 
+    
+      return 0;
+    }
+
+Este último ejemplo se lee un archivo de texto y se imprime su contenido
+en la pantalla.
+
+Se ha creado un ciclo while que lee el archivo línea por línea, usando
+``getline``. El valor devuelto por ``getline`` es una referencia al
+objeto de flujo en sí mismo, que cuando se evalúa como una expresión
+booleana (como en este ciclo while) es verdadero si el flujo está listo
+para más operaciones y falso si el final del archivo ha sido alcanzado o
+si ocurrió algún otro error.
 
 Ejercicio
 ^^^^^^^^^
@@ -495,7 +592,29 @@ Escribe el programa a partir de las siguiente indicaciones.
 
 .. code:: c++
 
-    // Completa
+    #include <iostream>
+    #include <fstream>
+    using namespace std;
+    int main() {
+        fstream unArchivo;
+        unArchivo.open("data.txt", ios::in);
+        if (!unArchivo) {
+            cout << "No hay el archivo";
+        }
+        else {
+            char ch;
+    
+            while (1) {
+                unArchivo >> ch;
+                if (unArchivo.eof())
+                    break;
+    
+                cout << ch;
+            }
+        }
+        unArchivo.close();
+        return 0;
+    }
 
 Cambiar el nombre de un archivo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -640,9 +759,10 @@ parámetro ``direction``. ``offset`` es de tipo ``streamoff``. Y
 determina el punto desde donde se cuenta el offser y que puede tomar
 cualquiera de los siguientes valores:
 
--  ``ios::beg`` offset contado desde el comienzo del flujo
--  ``ios::cur`` offset contado desde la posición actual
--  ``ios::end`` offset contado desde el final del flujo.
+-  ``ios::beg`` desplazamiento(offset) contado desde el comienzo del
+   flujo
+-  ``ios::cur`` desplazamiento contado desde la posición actual
+-  ``ios::end`` desplazamiento contado desde el final del flujo.
 
 Ejemplo
 ^^^^^^^
@@ -652,7 +772,22 @@ para obtener el tamaño de un archivo:
 
 .. code:: c++
 
-    // Completa
+    #include <iostream>
+    #include <fstream>
+    using namespace std;
+    
+    int main () {
+      streampos begin,end;
+      
+      ifstream unArchivo ("ejemplo.bin", ios::binary);
+      begin = unArchivo.tellg();
+      unArchivo.seekg (0, ios::end);
+        
+      end = unArchivo.tellg();
+      unArchivo.close();
+      cout << "El tam es: " << (end-begin) << " bytes.\n";
+      return 0;
+    }
 
 Observa el tipo que hemos usado para las variables ``begin`` y ``end``:
 
@@ -661,18 +796,17 @@ Observa el tipo que hemos usado para las variables ``begin`` y ``end``:
    streampos tam;
 
 ``streampos`` es un tipo específico utilizado para el posicionamiento de
-archivos y búfer y es el tipo devuelto por ``archivo.tellg()``. Los
+archivos y búfers y es el tipo devuelto por ``archivo.tellg()``. Los
 valores de este tipo se pueden restar de forma segura de otros valores
 del mismo tipo y también se pueden convertir a un tipo entero lo
 suficientemente grande como para contener el tamaño del archivo.
 
 Estas funciones de posicionamiento de flujo utilizan dos tipos
-particulares: ``streampos`` y ``streamoff``. Estos tipos también se
-definen como tipos de miembros de la clase de flujo:
+particulares: ``streampos`` y ``streamoff``.
 
--  ``streampos ios::pos_type`` Definido como fpos. Se puede convertir
-   a/desde ``streamoff`` y se pueden sumar o restar valores de estos
-   tipos
+-  ``streampos ios::pos_type`` Definido como ``fpos<mbstate_t>``. Se
+   puede convertir a/desde ``streamoff`` y se pueden sumar o restar
+   valores de estos tipos
 
 -  ``streamoff ios::off_type`` Es un alias de uno de los tipos
    integrales fundamentales (como int o long long).
@@ -703,7 +837,49 @@ Ejemplo general
         }
         else
         {
-            // Completa
+            // escribimos algo de texto en el archivo 
+            fs<<s;
+    
+            // movemos el puntero del archivo desde el principio  hasta el quinto carácter para leer
+    
+            fs.seekg(5, ios::beg);
+    
+            // leee 12 caracteres desde la posición actual
+    
+            for(i=1; i<=12; i++)
+            {
+                fs.get(c);
+                cout<<c;
+            }
+    
+            // movemos el puntero del archivo, 11 caracteres hacia atrás desde su posición actual
+            fs.seekg(-11, ios::cur);
+    
+            // se lee 3 caracteres desde la posición actual
+            cout<<endl;
+            for(i=1; i<=3; i++)
+            {
+                fs.get(c);
+                cout<<c;
+            }
+    
+            //movemos el puntero del archivo desde el principio hasta el carácter 17 para escribir
+            fs.seekp(17, ios::beg);
+    
+            // escribe y Rust desde la posición actual
+            fs<<" y Rust";
+    
+            // mueve el puntero del archivo al principio del archivo para leer
+            fs.seekg(0, ios::beg);
+    
+            // leer todo el archivo desde el principio
+    
+            cout<<endl;
+            while(!fs.eof())
+            {
+                fs.get(c);
+                cout<<c;
+            }
         }
     
         fs.close();
