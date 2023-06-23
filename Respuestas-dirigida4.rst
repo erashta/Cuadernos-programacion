@@ -35,7 +35,6 @@ dada.
        return 0;
     }
 
-
 Implementa la función: ``void rotar(int r, char *p, char *q)`` la cual
 rota r posiciones a las letras de la cadena apuntada por p y las
 almacena en una cadena apuntada por q.
