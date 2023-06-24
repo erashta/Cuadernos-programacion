@@ -1053,156 +1053,6 @@ En el lado izquierdo de ``'.*'`` siempre habría una variable de
 estructura (objeto) o una referencia y en el lado izquierdo de ``'->*'``
 habría ser siempre un puntero a una estructura (objeto).
 
-Implementa un programa para mantener una base de datos con información
-de accesorios o partes de equipos informáticos. Para esto deberás
-incluir lo siguiente:
-
-El tipo estructura accesorio cuyos campos son el número de partes,
-nombre, cantidad (stock). Define el arreglo inventario que tendrá un
-tamaño límite de 100 accesorios.
-
-En la función ``main`` se presentará un menú que pedirá el ingreso de un
-código de operación, luego se realizará alguna de las siguientes tareas:
-
--  Insertar: intenta añadir un nuevo accesorio, si fuera posible.
-   Muestra un mensaje de error si el número de parte ya existe.
-
--  Buscar: Solicita un número de accesorio y lo busca en la base de
-   datos. Si la ubica, imprime el nombre y stock, sino imprime un
-   mensaje de error.
-
--  Actualizar: Solicita un número de accesorio y lo busca en la base de
-   datos. Si el número de parte no existe muestra un mensaje de error,
-   sino le pide al usuario ingresar la cantidad y realiza el cambio.
-
--  Listar: Presenta todos los accesorios adquiridos. Los accesorios se
-   mostrarán en el orden que fueron ingresados. El menú se presentará de
-   forma interactiva hasta que el usuario presione el código 5.
-
-::
-
-   MENU
-   (1) Insertar
-   (2) Buscar
-   (3) Actualizar
-   (4) Listar
-   (5) Salir
-
-Elije el código de operación.
-
-.. code:: c++
-
-    #include <iostream>
-    #include <cstdio>
-    #include <string>
-    #define TAM 80
-    using namespace std;
-    struct TAccesorio{
-         int parte; 
-         string nombre;
-         int cantidad;
-    };
-    struct TAccesorio inv[TAM];
-    int menu();
-    void Listar(struct TAccesorio inv[],int n);
-    int Ubicar_np(int np,struct TAccesorio inv[],int n);
-    void Mostrar(int np,struct TAccesorio inv[],int n);
-    void Actualizar(int np,struct TAccesorio inv[],int n);
-    int main(){
-       int i,j,k,n,nparte,y;
-       int opc;
-       char resp;
-       n=0;
-       do{
-            opc=menu();
-        switch(opc){
-              case 1:  
-                    cout<<"Numero de parte: ";cin>>nparte;
-            y=-1;
-                    if (n>0)          
-                       y=Ubicar_np(nparte,inv,n);
-            if (y==-1){
-                cout<<"Accesorio Nro. "<<n+1<<"\n";
-                inv[n].parte=nparte;
-                            cin.ignore();
-                   cout<<"Nombre: ";
-                getline(cin,inv[n].nombre);
-                cout<<"Cantidad: ";cin>>inv[n].cantidad;  
-                n=n+1;
-                    }
-            else{  
-                        cout<<"Accesorio ya existe\n"; 
-            }
-                    break;                 
-               case 2: //Ubicar    
-                    cout<<"Numero de parte: ";cin>>nparte;
-                    Mostrar(nparte,inv,n);                 
-                    break;
-               case 3: //Actualizar   
-                    cout<<"Numero de parte: ";cin>>nparte;
-                    Actualizar(nparte,inv,n);                 
-                    break;
-             case 4: 
-            Listar(inv,n);
-                    break;
-            }
-            cout<<"¿Desea continuar?(S/N): ";
-            cin>>resp;
-         }while (resp=='S');
-       return 0;
-    }
-    int Ubicar_np(int np,struct TAccesorio inv[],int n){
-       int hallado=-1;
-       for (int i=0;i<n;i++)
-           if (np==inv[i].parte)
-                  hallado=i;
-       return  hallado;
-    }
-    void Actualizar(int np,struct TAccesorio inv[],int n){
-       int y,cant;
-       y=Ubicar_np(np,inv,n);
-       if ( y!=-1){
-          cout<<"\nIngrese nueva cantidad: ";
-          cin>>cant;
-          inv[y].cantidad=cant;
-          cout<<"Se actualizaron los datos...\n";  
-       }
-       else
-          cout<<"Error. Codigo de accesorio no existe.\n";
-    }
-    void Mostrar(int np,struct TAccesorio inv[],int n){
-       int y;
-       y=Ubicar_np(np,inv,n);
-       if ( y!=-1){
-          cout<<"\nNombre: "<<inv[y].nombre;
-          cout<<"\nCantidad: "<<inv[y].cantidad;  
-       }
-       else
-          cout<<"Error. Codigo de accesorio no existe.\n";
-    }
-    
-    void Listar(struct TAccesorio inv[],int n){
-       cout<<"Datos de los accesorios\n";
-       for (int i=0;i<n;i++){
-         cout<<"\nAccesorio Nro. "<<i+1;
-         cout<<"\nNumero de Parte: "<<inv[i].parte;
-         cout<<"\nNombre: "<<inv[i].nombre;
-         cout<<"\nCantidad: "<<inv[i].cantidad<<endl;
-       }
-    }
-    int menu(){
-      int opc;
-      cout<<"\tMENU\n";
-      cout<<"(1)Insertar\n";  
-      cout<<"(2)Buscar\n";
-      cout<<"(3)Actualizar\n";
-      cout<<"(4)Listar\n";
-      cout<<"(5)Salir\n";
-      cout<<"Elija la opcion: ";cin>>opc;
-      return opc;
-    }
-
-
 Declara el dato de tipo estructura Estudiante conformada por los
 miembros:
 
@@ -1229,6 +1079,49 @@ Ejemplo:
    Nro 1 :              chalito        4
    Nro 2 :              tomo           9 
    Nota máxima: 9
+
+.. code:: c++
+
+    #include <iostream>
+    #include <iomanip>
+    using namespace std;
+    const int CAPACIDAD = 20;
+    
+    typedef struct {
+        char nombre[CAPACIDAD];
+        int nota;
+    } Estudiante;
+    
+    void ingresar(Estudiante* ptr, int cap);
+    void mostrar(Estudiante* ptr, int cap);
+    
+    int main() {
+        Estudiante* ptr = nullptr;
+        int n = 0;
+        cout << "ingrese la cantidad de estudiantes a ingresar\t:\t"; cin >> n; cin.get();
+        ptr = new Estudiante[n];
+        ingresar(ptr, n);
+        mostrar(ptr, n);
+        delete[] ptr; ptr = nullptr;
+    }
+    
+    void ingresar(Estudiante* ptr, int cap) {
+        for (int j = 0; j < cap; ++j) {
+            ptr[j].nota = rand()%21;
+            cout << "nombre del estudiante\t:\t";
+            cin >> ptr[j].nombre;
+        }
+    }
+    
+    void mostrar(Estudiante* ptr, int cap) {
+        int max = -1;
+        cout << "\t\t\t" << setw(CAPACIDAD) << "Nombre" << "\t\tNota\n";
+        for (int j = 0; j < cap; ++j) {
+            cout << "Nro " << j << "\t:\t" << setw(CAPACIDAD) << ptr[j].nombre << "\t\t" << ptr[j].nota << endl;
+            if (ptr[j].nota > max) max = ptr[j].nota;
+        }
+        cout << "Nota maxima\t:\t" << max << endl;
+    }
 
 Estás ejecutando un sitio web y estás tratando de realizar un
 seguimiento de cuánto dinero gana por día con la publicidad. Declara una
