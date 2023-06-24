@@ -560,6 +560,334 @@ solo si ``p`` es ``NULL``. ``p`` sería ``NULL`` cuando lleguemos a
 ``create()``, ``p`` no sería ``NULL``, por lo que no creamos ningún
 objeto adicional.
 
+Crear una clase llamada ``Jugador``. Los atributos de esta clase serán
+la posición x y la posición y, en donde ambos son enteros y representan
+la posición actual del jugador. Además de un atributo llamado ``pasos``
+que representa la cantidad de pasos máximos que puede dar el jugador.
+
+Crear una método ``Mover(int Direccion)``. El parámetro ``Direccion``
+define el tipo de movimiento que realizamos. Este método será llamado
+constantemente hasta que la cantidad de pasos se acabe, y el argumento
+que recibirá será 4, 8, 6 o 2 ingresado por el usuario. El valor 4 será
+para un movimiento hacia la izquierda, el 8 para arriba, el 6 para la
+derecha y el 2 para abajo.
+
+.. code:: c++
+
+    // Pregunta y código de Pierre Ruiz
+    #include <iostream>
+    using namespace std;
+    class Jugador{
+        int x = 0;
+        int y = 0;
+        int pasos = 10;
+        
+        public:
+            Jugador();
+        
+            Jugador(int x, int y, int pasos = 10);
+        
+            void Mover(int Direccion);
+        
+            int GetPasos() { return pasos; }
+        
+            void ImprimirPosicionActual();
+    };
+    int main(){
+        Jugador* jugador = new Jugador();
+        cout << "Bienvenido al juego!\nPor favor siga las siguientes instrucciones:\n";
+        cout << "Controles:\n2->Mover abajo\n4->Mover izquierda\n6->Mover derecha\n8->Mover arriba\n";
+        int turnos = 0;
+        while(turnos < jugador->GetPasos()){
+            int Direccion;
+            cout << "Ingrese un valor: "; cin >> Direccion;
+            while(Direccion!= 4 && Direccion!= 8 && Direccion!=6 && Direccion!=2){
+                cout << "Error: El valor ingresado no esta presente en el menu\nIngrese un valor: "; cin >> Direccion;
+            }
+            jugador->Mover(Direccion); 
+        }
+        cout << "El juego ha finalizado";
+    }
+    
+    Jugador::Jugador(){ } 
+    
+    Jugador::Jugador(int x, int y, int pasos){
+        this->x = x;
+        this->y = y;
+        this->pasos = pasos;
+    }
+    
+    void Jugador::Mover(int Direccion){
+        switch(Direccion){
+            case 4: x-=1; break;
+            case 6: x+=1; break;
+            case 8: y+=1; break;
+            case 2: y-=1; break;
+            default: break;
+        }
+        pasos -= 1;
+        ImprimirPosicionActual();
+    }
+    
+    void Jugador::ImprimirPosicionActual(){
+       cout << "(" << x << ", " << y << ")\n";
+    }
+
+Crear una clase llamada ``Enemigo``, Los atributos de esta clase, al
+igual que la anterior, tendrán la posición ``x`` y posición ``y``
+representando la posición actual del enemigo. Sin embargo, el enemigo no
+tendrá una cantidad máxima de pasos, es decir, se podrá mover cuanto
+quiera. Crear un método ``Mover(int Direccion)`` que tiene una
+funcionalidad igual al de la clase ``Persona`` y se llamará al final de
+cada movimiento que realice la persona, en donde el valor del parámetro
+``Direccion`` será dado de forma aleatoria.
+
+.. code:: c++
+
+    // Pregunta y código de Pierre Ruiz
+    
+    #include <iostream>
+    #include <time.h>
+    #include <stdlib.h>
+    using namespace std;
+    class Jugador{
+        int x = 0;
+        int y = 0;
+        int pasos = 10;
+        
+        public:
+            Jugador(){ }
+            Jugador(int x, int y, int pasos = 10);
+            void Mover(int Direccion);
+            int GetPasos() { return pasos; }
+            void ImprimirPosicionActual();
+    };
+    class Enemigo{
+        int x = 0;
+        int y = 0;
+        
+        public:
+            Enemigo(){ }
+            Enemigo(int x, int y);
+            void Mover(int Direccion);
+            void ImprimirPosicionActual();
+    };
+    int main(){
+        srand(time(NULL));
+        
+        Jugador* jugador = new Jugador();
+        Enemigo* enemigo = new Enemigo(1 + rand()%10, 1 + rand()%20);
+        cout << "Bienvenido al juego!\nPor favor siga las siguientes instrucciones:\n";
+        cout << "Controles:\n2->Mover abajo\n4->Mover izquierda\n6->Mover derecha\n8->Mover arriba\n";
+        
+        cout << "Posicion del enemigo: "; enemigo->ImprimirPosicionActual();
+        while(0 < jugador->GetPasos()){
+            int Direccion;
+            cout << "Ingrese un valor: "; cin >> Direccion;
+            while(Direccion!= 4 && Direccion!= 8 && Direccion!=6 && Direccion!=2){
+                cout << "Error: El valor ingresado no esta presente en el menu\nIngrese un valor: "; cin >> Direccion;
+            }
+            jugador->Mover(Direccion);
+    
+        enemigo->Mover(1 + rand()%4);  
+        }
+        cout << "El juego ha finalizado";
+    }
+    
+    Jugador::Jugador(int x, int y, int pasos){
+        this->x = x;
+        this->y = y;
+        this->pasos = pasos;
+    }
+    
+    void Jugador::Mover(int Direccion){
+        switch(Direccion){
+            case 4: x-=1; break;
+            case 6: x+=1; break;
+            case 8: y+=1; break;
+            case 2: y-=1; break;
+            default: break;
+        }
+        pasos -= 1;
+        ImprimirPosicionActual();
+    }
+    
+    void Jugador::ImprimirPosicionActual(){
+        cout << "(" << x << ", " << y << ")\n";
+    }
+    
+    Enemigo::Enemigo(int x, int y){
+        this->x = x;
+        this->y = y;
+    } 
+    
+    void Enemigo::Mover(int Direccion){
+        switch(Direccion){
+            case 1: x-=1; break;
+            case 2: x+=1; break;
+            case 3: y+=1; break;
+            case 4: y-=1; break;
+            default: break;
+        }
+        ImprimirPosicionActual();
+    }
+    
+    void Enemigo::ImprimirPosicionActual(){
+        cout << "(" << x << ", " << y << ")\n";
+    }
+
+Crear un método ``Disparar(int Dirección)`` que dispare una bala desde
+la posición del jugador según la dirección asignada. Además. crear un
+menú para seleccionar la acción del jugador a realizar. Si el jugador va
+a moverse o disparar. Tener en cuenta que este menú aparecerá al inicio
+de cada turno del jugador y solo podrá realizar una de las dos acciones
+en cada turno.
+
+.. code:: c++
+
+    // Pregunta y código de Pierre Ruiz
+    #include <iostream>
+    #include <time.h>
+    #include <stdlib.h>
+    using namespace std;
+    class Enemigo{
+        int x = 0;
+        int y = 0;
+        bool vivo = true;
+        
+        public:
+            Enemigo(){ }
+            Enemigo(int x, int y);
+            void Mover(int Direccion);
+            void ImprimirPosicionActual();
+            void ChangeVivo() { vivo = !vivo; }
+            bool GetVivo() { return vivo; }
+            int GetX() { return x; }
+            int GetY() { return y; }
+    };
+    class Jugador{
+        int x = 0;
+        int y = 0;
+        int pasos = 20;
+        
+        public:
+            Jugador(){ }
+            Jugador(int x, int y, int pasos = 20);
+            void ElegirAccion(int Accion, int Direccion, Enemigo* enemigo);
+            void Mover(int Direccion);
+            int GetPasos() { return pasos; }
+            void ImprimirPosicionActual();
+            void Disparar(int Direccion, Enemigo* enemigo);
+    };
+    
+    int main(){
+        srand(time(NULL));
+        Jugador* jugador = new Jugador();
+        Enemigo* enemigo = new Enemigo(1 + rand()%10, 1 + rand()%20);
+        cout << "Bienvenido al juego!\nPor favor siga las siguientes instrucciones:\n";
+        cout << "Eleccion de accion:\n1->Mover\n2->Disparar\n";
+        cout << "Direccion de la accion:\n2->Abajo\n4->Izquierda\n6->Derecha\n8->Arriba\n";
+        cout << "Posicion del enemigo: "; enemigo->ImprimirPosicionActual();
+        while(0 < jugador->GetPasos()){
+            int Accion;
+            int Direccion;
+            cout << "Ingrese la acción a realizar: "; cin >> Accion;
+            while(Accion != 1 && Accion != 2){
+                cout << "Error: El valor ingresado para la accionno esta presente en el menu\nIngrese un valor: "; cin >> Accion;
+            }
+            cout << "Ingrese la direccion: "; cin >> Direccion;
+            while(Direccion!= 4 && Direccion!= 8 && Direccion!=6 && Direccion!=2){
+                cout << "Error: El valor ingresado para la direccion no esta presente en el menu\nIngrese un valor: "; cin >> Direccion;
+            }
+            jugador->ElegirAccion(Accion, Direccion, enemigo);
+            if(!enemigo->GetVivo()){
+                cout << "¡Felicidades!, has eliminado al enemigo\n";
+                break;
+            }
+            enemigo->Mover(1 + rand()%4);  
+        }
+        cout << "El juego ha finalizado";
+    }
+    
+    Jugador::Jugador(int x, int y, int pasos){
+        this->x = x;
+        this->y = y;
+        this->pasos = pasos;
+    }
+    
+    void Jugador::ElegirAccion(int Accion, int Direccion, Enemigo* enemigo){
+        if(Accion == 1){
+            Mover(Direccion);
+            return;
+        }
+        Disparar(Direccion, enemigo);
+    } 
+    
+    void Jugador::Mover(int Direccion){
+        switch(Direccion){
+            case 4: x-=1; break;
+            case 6: x+=1; break;
+            case 8: y+=1; break;
+            case 2: y-=1; break;
+            default: break;
+        }
+        pasos -= 1;
+        ImprimirPosicionActual();
+    }
+    
+    void Jugador::Disparar(int Direccion, Enemigo* enemigo){
+        switch(Direccion){
+            case 4: 
+                if(y != enemigo->GetY()){ return; }
+                    if(x - enemigo->GetX() > 0 ){
+                        enemigo->ChangeVivo();
+            }
+            break;
+            case 6:
+                if(y != enemigo->GetY()){ return; }
+                   if(x - enemigo->GetX() < 0 ){
+                    enemigo->ChangeVivo();
+            }
+            break;
+            case 2:
+                if(x != enemigo->GetX()){ return; }
+                    if(y - enemigo->GetY() > 0 ){
+                        enemigo->ChangeVivo();
+                }
+            break;
+            case 8:
+                if(x != enemigo->GetX()){ return; }
+                    if(y - enemigo->GetY() < 0 ){
+                        enemigo->ChangeVivo();
+                }
+                break;
+        }
+    }
+    
+    void Jugador::ImprimirPosicionActual(){
+        cout << "(" << x << ", " << y << ")\n";
+    }
+    
+    Enemigo::Enemigo(int x, int y){
+        this->x = x;
+        this->y = y;
+    } 
+    
+    void Enemigo::Mover(int Direccion){
+        switch(Direccion){
+            case 1: x-=1; break;
+            case 2: x+=1; break;
+            case 3: y+=1; break;
+            case 4: y-=1; break;
+            default: break;
+        }
+        ImprimirPosicionActual();
+    }
+    
+    void Enemigo::ImprimirPosicionActual(){
+        cout << "(" << x << ", " << y << ")\n";
+    }
+
 Estructuras
 ~~~~~~~~~~~
 
@@ -872,7 +1200,7 @@ Elije el código de operación.
       cout<<"(5)Salir\n";
       cout<<"Elija la opcion: ";cin>>opc;
       return opc;
-    } 	
+    }
 
 
 Declara el dato de tipo estructura Estudiante conformada por los
