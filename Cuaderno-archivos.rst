@@ -889,13 +889,10 @@ Ejemplo general
 ¿Qué es un archivo binario?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Comprendamos cómo se almacenan los datos en un archivo binario y cómo se
-procesan en las computadoras.
-
 Los archivos binarios almacenan datos en forma de una secuencia de
 bytes. Estas secuencias son un flujo de grupos de ocho o dieciséis bits.
 Estos archivos se utilizan principalmente para almacenar datos
-personalizados para aplicaciones y, a veces, archivos que guardan varios
+personalizados para aplicaciones que guardan varios
 tipos de datos, como imágenes, audio, texto, etc.
 
 Los desarrolladores que codifican estos formatos de archivo
@@ -911,15 +908,16 @@ Los archivos binarios suelen contener encabezados como ``.jpg`` y
 ``.png`` para indicar el tipo de información que han almacenado. Los
 datos del archivo binario se cifran con 1 y 0, lo que lo hace más seguro
 ya que la información no es legible. Ocupan mucho menos espacio a medida
-que se almacenan en la memoria según su tamaño de bits (igual que el
-almacenamiento de la memoria).
+que se almacenan en la memoria según su tamaño de bits.
 
-Las desventajas de los archivos binarios son que un simple error en los
+Algunas desventajas de los archivos binarios implican  que un simple error en los
 datos corrompe todo el archivo y es difícil corregir tales errores. Sin
-embargo hay formas de prevenir la corrupción de datos en el futuro. El
+embargo hay formas de prevenir la corrupción de datos. El
 archivo debe sufrir muchas variaciones internas y formas de
 representación para transferir archivos binarios de una computadora a
-otra. Los usuarios habituales siempre deben tener un sistema de soporte
+otra. 
+
+Los usuarios habituales siempre deben tener un sistema de soporte
 convertible para ver los datos en archivos binarios.
 
 Ejemplo: salida de un archivo de texto
@@ -1106,7 +1104,7 @@ Ejemplo 1
      
        os.close();                              // debes cerrar antes de abrir otro flujo asociado con 
                                                  // el mismo archivo
-                                                 e
+                                                 
        buff=0.0;                                 // limpiamos el buffer
     
        ifstream is("intdata.dat", ios::binary);  // creamos un flujo de entrada  is
@@ -1120,7 +1118,7 @@ Ejemplo 1
     
     } 
 
-¿Cuál es el uso de & y sizeof en el código?
+¿Cuál es el uso de & y sizeof en el código?.
 
 .. code:: c++
 
@@ -1171,7 +1169,7 @@ Ejemplo 2
 
 -  ¿Tiene que recorrer el arreglo para leer y escribir?
 
--  En lugar de ``MAX*sizeof(int)``, ¿qué más se podría haber usado?
+-  En lugar de ``MAX*sizeof(int)``, ¿qué más se podría haber usado?.
 
 .. code:: c++
 
@@ -1181,10 +1179,10 @@ Objetos de lectura y escritura
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 El siguiente código parcial muestra la idea de escribir y leer un objeto
-completo. Esto funciona si tu objeto no contiene punteros o cadenas stl
-(como un ejemplo). Piensa en una copia superficial frente a una copia
+completo. Esto funciona si tu objeto no contiene punteros o cadenas STL.
+Piensa en una copia superficial frente a una copia
 profunda (copiar solo la dirección en lugar de copiar todos los
-elementos.
+elementos).
 
 .. code:: c++
 
@@ -1216,7 +1214,7 @@ elementos.
     
     } 
 
-Si lees y escribes un objeto desde programas separados, ¡asegúrate de
+Si lees y escribes un objeto desde partes separados, ¡asegúrate de
 que la clase que lee un objeto es idéntica a la clase que lo escribió!.
 
 Leer y escribir varios objetos
