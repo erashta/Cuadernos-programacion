@@ -43,7 +43,7 @@ Asumiendo que tenemos una tarea relacionada, podemos ir más lejos y extraer una
 Tal pirámide de clases es una **jerarquía**. En esta jerarquía, la clase `Gato` lo hereda todo de las clases `Animal` y `Organismo`. 
 
 
-<img src="Imagenes/POO4.png" width="290px" height="250px">
+<img src="Imagenes/POO4.png" width="340px" height="250px">
 
 Las subclases pueden sobrescribir el comportamiento de los métodos que heredan de clases padre. Una subclase puede sustituir completamente el comportamiento por defecto o limitarse 
 a mejorar con material adicional. 
