@@ -32,35 +32,6 @@ Sin embargo, no proporciona ninguna forma de acceder a un elemento arbitrario de
 
 Lo mismo es cierto si desea insertar un nuevo nodo en una ubicación específica. No es difícil ver el problema de la ineficiencia.  
 
- 
-Una implementación típica de lista enlazada tendría un código que define un nodo y se parece a esto:  
-
-```
-class ListNode { 
-  String data; 
-  ListNode nextNode; 
-} 
-ListNode firstNode; 
-```
-
-Luego podrías escribir un método para agregar nuevos nodos insertándolos al principio de la lista: 
-
-```
-ListNode newNode = new ListNode(); 
-NewNode.nextNode = firstNode; 
-firstNode = newNode; 
-```
- 
-Se puede recorrer todos los elementos de la lista es una tarea sencilla: 
-
-```
-ListNode curNode = firstNode;
-while (curNode != null) {
-  ProcessData(curNode);
-  curNode = curNode.nextNode;
-}
-```
-
 Una estructura de datos relacionada, la lista doblemente enlazada, ayuda un poco a este problema. La diferencia con una lista enlazada típica es que la estructura de datos raíz 
 almacena un puntero tanto al primer nodo como al último. 
 
@@ -68,7 +39,6 @@ Cada nodo individual tiene un enlace al nodo anterior y al siguiente en la lista
 Aún así, sin embargo, esto es bastante limitado. 
 
 ### Colas  
-
 
 Una cola es una estructura de datos que se describe mejor como  `primero en entrar, primero en salir`. 
  
