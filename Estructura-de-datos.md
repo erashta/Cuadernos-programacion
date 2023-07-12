@@ -32,7 +32,7 @@ Sin embargo, no proporciona ninguna forma de acceder a un elemento arbitrario de
 
 Lo mismo es cierto si desea insertar un nuevo nodo en una ubicación específica. No es difícil ver el problema de la ineficiencia.  
 
-Una estructura de datos relacionada, la lista doblemente enlazada, ayuda un poco a este problema. La diferencia con una lista enlazada típica es que la estructura de datos raíz 
+Una estructura de datos relacionada, la **lista doblemente enlazada**, ayuda un poco a este problema. La diferencia con una lista enlazada típica es que la estructura de datos raíz 
 almacena un puntero tanto al primer nodo como al último. 
 
 Cada nodo individual tiene un enlace al nodo anterior y al siguiente en la lista. Esto crea una estructura más flexible que permite viajar en ambas direcciones. 
