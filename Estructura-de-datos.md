@@ -45,3 +45,21 @@ Una cola es una estructura de datos que se describe mejor como  `primero en entr
 Quizás el uso más común de una cola dentro de un problema es implementar un Breadth First Search  (BFS). BFS significa explorar primero todos los estados que se pueden alcanzar en un paso, luego todos los estados que se pueden alcanzar en dos pasos, etc. 
 
 Una cola ayuda a implementar esta solución porque almacena una lista de todos los espacios de estado que se han visitado.  
+
+### Pilas
+
+Las pilas son, en cierto sentido, lo opuesto a las colas, ya que se describen como  `último en entrar, primero en salir`. 
+
+Si bien puede parecer que las pilas rara vez se implementan explícitamente, una sólida comprensión de cómo funcionan y cómo se usan implícitamente es una educación que vale la pena. 
+
+Aquellos que han estado programando por un tiempo están íntimamente familiarizados con la forma en que se usa la pila cada vez que se llama a una subrutina desde dentro de un programa. 
+
+Todos los parámetros y por lo general, las variables locales se asignan sin espacio en la pila. Luego, una vez finalizada la subrutina, las variables locales se eliminan y la dirección de retorno se `extrae` de la pila, de modo que la ejecución del programa puede continuar donde se quedó antes de llamar a la subrutina. 
+
+La comprensión de lo que esto implica se vuelve más importante a medida que las funciones llaman a otras funciones, que a su vez llaman a otras funciones. Cada llamada de función aumenta el `nivel de anidamiento` (la profundidad de las llamadas de función, por así decirlo) de la ejecución y utiliza cada vez más espacio en la pila. 
+
+De suma importancia es el caso de una función recursiva. Cuando una función recursiva se llama continuamente a sí misma, el espacio de la pila se usa rápidamente a medida que aumenta la profundidad de la recursividad. 
+
+
+
+
