@@ -67,3 +67,11 @@ almacena un puntero tanto al primer nodo como al último.
 Cada nodo individual tiene un enlace al nodo anterior y al siguiente en la lista. Esto crea una estructura más flexible que permite viajar en ambas direcciones. 
 Aún así, sin embargo, esto es bastante limitado. 
 
+### Colas  
+
+
+Una cola es una estructura de datos que se describe mejor como  `primero en entrar, primero en salir`. 
+ 
+Quizás el uso más común de una cola dentro de un problema es implementar un Breadth First Search  (BFS). BFS significa explorar primero todos los estados que se pueden alcanzar en un paso, luego todos los estados que se pueden alcanzar en dos pasos, etc. 
+
+Una cola ayuda a implementar esta solución porque almacena una lista de todos los espacios de estado que se han visitado.  
